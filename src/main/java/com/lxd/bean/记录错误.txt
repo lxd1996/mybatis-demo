@@ -1,0 +1,19 @@
+1.test文件中异常不能抛给主类
+2.配置文件<mappers>中的resource用'/'分割不是'.'
+3.连接jdbc的时候获取jdbc.propertios的时候获取不到
+4.写数据库的链接的时候要注意把&符号改成&amp
+    https://blog.csdn.net/weixin_42536480/article/details/90672013
+    由于学习的需要，在官网下载了MySQL8.0，在此将连接MySQL时的问题记录一下。
+
+    版本的不同，8.0的驱动和url变为：
+    com.mysql.cj.jdbc.Driver
+
+    jdbc:mysql://localhost:3306/firstsql?characterEncoding=utf-8&&serverTimezone=UTC&&useSSL=false
+
+    jar：mysql-connector-java-8.0.11.jar
+
+    但在mybatis中用以上配置报错：
+    对实体 “serverTimezone” 的引用必须以 ‘;’ 分隔符结尾。
+    解决方法：
+    改为&amp；
+    useUnicode=true&amp；serverTimezone=GMT&amp；useSSL=false

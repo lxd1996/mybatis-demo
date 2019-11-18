@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 引用 jdbc.properties 配置文件 -->
+    <properties >
+        <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/test?useUnicode=true&amp;serverTimezone=GMT&amp;useSSL=false" />
+    </properties>
+
+    <!-- typeAliases 设置类型别名 -->
+    <typeAliases>
+        <typeAlias type="com.lxd.bean.User" alias="User"></typeAlias>
+        <typeAlias type="com.lxd.bean.Teacher" alias="Teacher"></typeAlias>
+<!--        <package name="com.lxd.bean"/>-->
+    </typeAliases>
+
+    <!-- environments 环境配置 -->
+    <environments default="development">
+        <environment id="development">
+            <!-- 使用jdbc事务管理 -->
+            <transactionManager type="JDBC"></transactionManager>
+            <!-- 数据库连接池 -->
+            <!-- 数据库连接相关配置 ,这里动态获取jdbc.properties文件中的内容-->
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- 加载 mapper 映射文件 -->
+    <mappers>
+        <mapper resource="com/lxd/Mapper/UserMapper.xml"/>
+<!--        <package name="com.lxd.Mapper"/>-->
+    </mappers>
+</configuration>
