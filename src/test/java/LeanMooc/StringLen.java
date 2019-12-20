@@ -54,6 +54,10 @@ public class StringLen {
 
     @Test
     public void Stest(){
+        String aa = "distinct";
+        //String s = aa.toUpperCase();
+        //System.out.println(s);
+
         int i = 10;
         String str = "str";
         StringBuffer strbf = new StringBuffer("strbf");
