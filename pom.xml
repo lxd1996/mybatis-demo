@@ -26,6 +26,13 @@
             <artifactId>junit</artifactId>
             <version>4.11</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.github.houbb/opencc4j 简体繁体之间的切换 -->
+        <dependency>
+            <groupId>com.github.houbb</groupId>
+            <artifactId>opencc4j</artifactId>
+            <version>1.2.0</version>
+        </dependency>
+
     </dependencies>
 
     <!--Mapper映射文件-->

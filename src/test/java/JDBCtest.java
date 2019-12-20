@@ -17,8 +17,8 @@ public class JDBCtest {
                 String url = "jdbc:mysql://localhost:3306/test?useUnicode=true&serverTimezone=GMT&useSSL=false";//连接的时候和配置文件不同
                 String name = "root";
                 String password = "root";
-                 conn = DriverManager.getConnection(url, name, password);
-                 preparedStatement = conn.prepareStatement("select * from user where id = ?");
+                conn = DriverManager.getConnection(url, name, password);
+                preparedStatement = conn.prepareStatement("select * from user where id = ?");
                 preparedStatement.setInt(1, 2);//参数（第一个？的位置，第二个参数是传入的值）
                  resultSet = preparedStatement.executeQuery();
 
@@ -29,7 +29,8 @@ public class JDBCtest {
                 }
                 //System.out.println("连接成功了");
             }catch (Exception e){
-                System.out.println(e);
+                //System.out.println(e);
+                e.getMessage();
             }finally {
                 //if(preparedStatement  != null)
                 //preparedStatement.close();
