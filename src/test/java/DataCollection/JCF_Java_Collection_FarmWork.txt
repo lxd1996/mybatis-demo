@@ -1,0 +1,26 @@
+集合框架
+1.列表
+    List,ArrayList,LinkedList
+    主要实现：
+    -ArrayList(非同步的)
+        -以数组实现的列表，不支持同步
+        -利用索引位置进行快速定位访问
+        -不适合指定位置的插入、删除操作，但是和数组不同的是，数组是静态的，数组长度一旦确定
+            就不能修改；ArrayList是动态的，容量（长度）随时可以扩充
+        -适合变动不打，只要用于查询的数据
+        -ArrayList在元素填充满了的时候会自动扩充容器大小的50%
+
+    -LinkedList(非同步)
+        -以双向链表实现的列表，不支持同步
+        -可被当作堆栈、队列和双端队列进行操作
+        -顺序访问高效，随机访问较差，中间插入和删除高效
+        -适用于经常变化的数据
+        -
+    -Vocter(同步)
+2.集合
+    Set,HashSet,TreeSet,LinkedSet
+3.映射
+    Map,HashMap,TreeMap,LinkedMap
+两个工具类
+1.Array:对数组进行查找排序等操作
+2.Collections:对Collecction及其子类进行排序和查找操作

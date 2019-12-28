@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.util.Calendar;
 
+//测试性能
 public class StringBufferTest {
     @Test
     public  void  StrTest(){
