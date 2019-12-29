@@ -52,6 +52,7 @@ public class MapTest {
         while (iter.hasNext()) {
             key = iter.next();
             value = hashtable.get(key);
+            System.out.println(value);
         }
         //KeyEnumeration遍历，一般不用了
     }
@@ -133,6 +134,16 @@ public class MapTest {
         }
 
     }
+    /*
+    * 节点类：直接对文件进行读写
+    * InputStream,outputStream
+    *   File
+    * 包装类：
+    * 转化类：字节/字符/数据转化类
+    *   字节-》字符  字节和数据类型转化
+    * 装饰类：装饰节点类
+    *
+    * */
     public static void GatKeyByValue(String filePath,String key){
         Properties pps = new Properties();
 
