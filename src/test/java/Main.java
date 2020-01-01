@@ -1,5 +1,4 @@
-import javax.swing.*;
-import java.io.File;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -8,6 +7,6 @@ public class Main {
         System.out.println(Care);
         //var a = "String";
         //System.out.println(a);
-        var a = 'a';
+        //var a = 'a';
     }
 }
