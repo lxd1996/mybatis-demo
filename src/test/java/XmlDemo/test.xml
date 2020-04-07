@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<grade>
+    <Student>
+        <people chatseet="UTF-8">
+            <name >小虎</name>
+            <age>20</age>
+        </people>
+    </Student>
+    <Student>
+        <people>
+            <name>小明</name>
+            <age>22</age>
+        </people>
+
+    </Student>
+</grade>
