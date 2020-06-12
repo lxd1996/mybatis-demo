@@ -17,6 +17,13 @@ public class Teacher {
     }
 
     public void setName(String name) {
+
         this.name = name;
+    }
+
+    public static void main(String[] args) {
+        String str = "AN5CD6JWCGKTBDYA";
+
+        System.out.println(str.equals("AN5CD6JWCGKTBDYA"));
     }
 }

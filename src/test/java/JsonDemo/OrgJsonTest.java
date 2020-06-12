@@ -18,7 +18,7 @@ public class OrgJsonTest {
         testJsonFile();
     }
     public static void testJsonObject(){
-        Person person = new Person("小米",25);
+        Person person = new Person("小花",25);
         person.setScores(Arrays.asList(70,90,60));
         System.out.println(person.toString());
 
