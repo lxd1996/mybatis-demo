@@ -7,8 +7,6 @@
  **/
 public class testString {
     public static void main(String[] args) {
-        StringBuilder str  = new StringBuilder("qwerty");
-        StringBuilder reverse = str.reverse();
-        System.out.println(reverse);
+
     }
 }

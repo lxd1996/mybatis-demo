@@ -9,6 +9,7 @@ public class AwtTest {
         Panel pl = new Panel();
         pl.add(new Button("this button"));
         //pl.add(new Box(10));
+        pl.add(new TextField(20));
         pl.add(new TextArea());
         pl.add(new TextField(20));
         fm.add(pl);

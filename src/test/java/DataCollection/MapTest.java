@@ -7,6 +7,7 @@ import java.util.*;
 /*1.Hashtable 同步，数据量小
 2.HashMap 不同步，快，数据量大   K和V允许为null，无序的
     1）LinkedHashMap遍历的顺序和它插入的顺序保持一致,基于双向链表的
+    2)ConcurrentHashMap 线程同步的HashMap
 3.TreeMap 遍历的顺序是按照自然顺序（大小）或者comperTo方法规定的，只有value支持null值，基于二叉树的
 4.Properties 继承于HashTable，同步，数据量小，文件形式的，唯一一个可以将键值对保存到文件中的，所以在用
 一般用来写配置文件

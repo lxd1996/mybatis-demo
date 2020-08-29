@@ -38,6 +38,12 @@
             <artifactId>json</artifactId>
             <version>20190722</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.68</version>
+        </dependency>
     </dependencies>
 
     <!--Mapper映射文件-->
