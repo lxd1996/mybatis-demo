@@ -1,11 +1,24 @@
+import java.io.*;
+import java.util.Arrays;
 
 public class testString {
     public static void main(String[] args) {
-        String test1 = new String("abc");
-        String test2 = "abc";
-        String test3 = "abc";
-        System.out.println(test1 == test2);
-        System.out.println(test2 == test3);
+        int[] nums = new int[]{2,5,5,11};
+        int target = 10;
 
+        System.out.println(Arrays.toString(twoSum(nums,target)));
+    }
+    public static int[] twoSum(int[] nums, int target) {
+        int[] result = new int[2];
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i+1; j < nums.length; j++) {
+                if(nums[i] + nums[j] == target){
+                    result[0] = i;
+                    result[1] = j;
+                    return result;
+                }
+            }
+        }
+        return result;
     }
 }
