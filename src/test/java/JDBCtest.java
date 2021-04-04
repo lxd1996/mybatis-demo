@@ -20,7 +20,7 @@ public class JDBCtest {
                 conn = DriverManager.getConnection(url, name, password);
                 preparedStatement = conn.prepareStatement("select * from user where id = ?");
                 preparedStatement.setInt(1, 2);//参数（第一个？的位置，第二个参数是传入的值）
-                 resultSet = preparedStatement.executeQuery();
+                resultSet = preparedStatement.executeQuery();
 
                 while (resultSet.next()){
                     System.out.println(resultSet.getInt("id"));

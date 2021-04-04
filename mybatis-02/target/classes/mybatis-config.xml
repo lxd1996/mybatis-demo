@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <properties resource="jdbc.properties"/>
+    <typeAliases>
+        <package name="com.lxd.model"/>
+    </typeAliases>
+
+    <environments default="development">
+
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+
+        <!-- 第二个数据源-->
+        <environment id="linux">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driverlinux}"/>
+                <property name="url" value="${urllinux}"/>
+                <property name="username" value="${usernamelinux}"/>
+                <property name="password" value="${passwordlinux}"/>
+            </dataSource>
+        </environment>
+
+    </environments>
+
+    <mappers>
+        <mapper class="com.lxd.UserMapper"/>
+    </mappers>
+
+
+</configuration>

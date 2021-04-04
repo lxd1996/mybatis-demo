@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--导入配置文件jdbc.properties -->
+    <properties resource="jdbc.properties">
+        <!-- 也可以在这块配置，但是都配置后以外边为准 三个优先级 1.方法传入>2.properties > 3.这块配置-->
+        <property name="password" value="error"/>
+    </properties>
+
+    <!-- 有很多种的配置，都表示进阶 官方文档上很详细。。-->
+<!--    <settings>-->
+<!--        <setting name="" value=""/>-->
+<!--    </settings>-->
+
+    <typeAliases>
+        <!-- 方法一 ，每个都配置-->
+<!--        <typeAlias alias="user" type="com.lxd.model.User"/>-->
+
+        <!-- 方法二 配置包 名字默认为首字母小写的类--> <!-- 方法三 注解进行配置 但是需要先去开启扫描包-->
+        <package name="com.lxd.model"/>
+
+
+    </typeAliases>
+    <!-- -->
+    <!-- 配置数据源头 默认选择什么-->
+    <environments default="development">
+        <environment id="development">
+            <!-- 在 MyBatis 中有两种类型的事务管理器（也就是 type="[JDBC|MANAGED]"）：某些框架不希望用完关闭连接就用另一个-->
+            <transactionManager type="JDBC"/>
+            <!-- -->
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+
+        <!-- 第二个数据源-->
+        <environment id="linux">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driverlinux}"/>
+                <property name="url" value="${urllinux}"/>
+                <property name="username" value="${usernamelinux}"/>
+                <property name="password" value="${passwordlinux}"/>
+            </dataSource>
+        </environment>
+
+    </environments>
+
+    <!-- -->
+    <!--第一种配置方式 全限定的名称-->
+<!--    <mappers>-->
+<!--        <mapper resource="com/lxd/UserMapper.xml"/>-->
+<!--    </mappers>-->
+
+    <!--推荐第二种配置方式 包名加类名，注意点：但是需要接口和mapper文件名保持一致-->
+    <mappers>
+        <mapper class="com.lxd.UserMapper"/>
+    </mappers>
+
+<!--    &lt;!&ndash;第三种配置方式 包名加类名，注意点：但是需要接口和mapper文件名保持一致&ndash;&gt;-->
+<!--    <mappers>-->
+<!--        <package name="com.lxd"/>-->
+<!--    </mappers>-->
+
+</configuration>
