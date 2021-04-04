@@ -24,4 +24,8 @@ public interface UserMapper {
 
     public void update2(Map<String,Object> map);
 
+    public List<User> getUserBypage(Map map);
+
+    public List<User> getUserRowBrands();
+
 }

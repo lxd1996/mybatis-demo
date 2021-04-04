@@ -27,4 +27,13 @@
     <update id="update2" parameterType="java.util.Map">
         update USER set name =#{username} , age = #{userage} where id = #{id}
     </update>
+
+    <select id="getUserBypage" parameterType="java.util.Map" resultMap="resultmap">
+        select * from user limit #{startIndex},#{pageSize}
+    </select>
+
+    <select id="getUserRowBrands" resultMap="resultmap">
+        select * from user
+    </select>
+
 </mapper>
