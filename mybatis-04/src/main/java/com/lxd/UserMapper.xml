@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lxd.UserMapper">
+
+    <resultMap id="userTeacher" type="User">
+        <result column="name" property="usename"/>
+        <!-- 实体字段和数据库字段都要分别对应-->
+        <association property="teacherid" column="teacherid" javaType="Teacher" select="getTeacher"/>
+    </resultMap>
+
+    <!-- 嵌套几次写-->
+    <select id="getUerList" resultMap="userTeacher" >
+        select * from user;
+    </select>
+
+    <select id="getTeacher" resultType="Teacher">
+        select * from teacher where id = #{teacherid}
+    </select>
+
+    <!-- =================================================================================-->
+
+    <select id="getUserTest" resultType="user">
+        select * from user;
+    </select>
+
+    <!-- =================================================================================-->
+    <!-- 单独一次写-->
+    <select id="getUerList2" resultMap="userTeacher2">
+        select a.id,a.age,a.name,b.address as taddress,b.name as tname,b.age as tage from user a,teacher b where a.teacherid = b.id;
+    </select>
+    
+    <resultMap id="userTeacher2" type="user">
+        <result property="usename" column="name"/>
+        <association property="teacherid" javaType="teacher">
+            <result property="name" column="tname"/>
+            <result property="address" column="taddress" />
+            <result property="id" column="teacherid"/>
+            <result property="age" column="tage"/>
+        </association>
+    </resultMap>
+
+</mapper>
