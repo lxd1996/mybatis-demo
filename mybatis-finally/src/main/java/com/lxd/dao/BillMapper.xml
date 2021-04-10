@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lxd.dao.BillMapper">
+    <select id="getBillCountByProviderId" resultType="int">
+        select count(*) as num from test.smbms_bill where  providerId =#{providerId}
+    </select>
+
+    <insert id="add" parameterType="bill">
+        insert into test.smbms_bill (id) values (id)
+    </insert>
+
+    <select id="getBillList" resultType="bill">
+        select * from test.smbms_bill where productName = #{productName} and providerId = #{providerId}
+             and isPayment = #{isPayment} limit #{startindex}, #{pageSize}
+    </select>
+
+    <select id="getBillCount" resultType="int">
+        select count(*) as num from smbms_bill
+        <where>
+            <if test="productName != null">
+                and productName like concat ('%',#{productName},'%')
+            </if>
+            <if test="providerId != null">
+                and providerId like concat ('%',#{providerId},'%')
+            </if>
+            <if test="isPayment != null">
+                and isPayment like concat ('%',#{isPayment},'%')
+            </if>
+        </where>
+    </select>
+
+    <delete id="deleteBillById">
+        delete from smbms_bill where id = #{id}
+    </delete>
+
+    <select id="getBillById" resultType="bill">
+        select * from smbms_bill where id = #{id}
+    </select>
+
+    <update id="modify" parameterType="bill">
+        update smbms_bill set productName = #{productName} where id = #{id}
+    </update>
+
+    <delete id="deleteBillByProviderId" >
+        delete from smbms_bill where providerId = #{providerId}
+    </delete>
+</mapper>

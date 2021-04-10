@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zp.dao.UserMapper">
+    <!--测试数据库链接是否成功-->
+    <!--limit是分页，startindex是从什么时候开始
+    pagesize是一页多少条数据-->
+    <select id="getUser" resultType="user">
+        select *from test.smbms_user limit #{startindex},#{pagesize};
+    </select>
+
+    <!--//通过userCode获取User-->
+    <!--<select id="getLoginUser" resultType="user">
+        select * from smbms.smbms_user
+        where userCode=#{userCode};
+        <where>
+        userCode=#{userCode}
+        </where>
+    </select>-->
+    <select id="getLoginUser" parameterType="String" resultType="user">
+        select * from test.smbms_user
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="userCode!=null">
+                userCode=#{userCode}
+            </if>
+        </trim>
+    </select>
+
+    <!--增加用户信息-->
+    <insert id="add" parameterType="user">
+        insert into test.smbms_user (userCode,userName,userPassword,gender,birthday,phone,
+                                      address,userRole,createdBy,creationDate)
+        values (#{userCode},#{userName},#{userPassword},#{gender},#{birthday},
+                #{phone},#{address},#{userRole},#{createdBy},#{creationDate});
+    </insert>
+
+    <!--通过条件查询userList-->
+    <select id="getUserList" parameterType="String" resultType="user">
+        select * from test.smbms_user
+        <where>
+            <if test="userName !=null">
+                and userName=#{userName}
+            </if>
+            <if test="userRole !=null">
+                and userRole=#{userRole}
+            </if>
+        </where>
+        limit #{currentPageNO},#{pageSize}
+    </select>
+
+    <!--通过条件查询-用户表记录数 String userName, int userRole-->
+    <select id="getUserCount" parameterType="String" resultType="int">
+        select count(*)from test.smbms_user
+        <where>
+            userName = #{userName} and userRole = #{userRole}
+        </where>
+    </select>
+    <!--删除用户，通过id-->
+    <delete id="deleteUserById">
+        delete from test.smbms_user where id=#{id}
+    </delete>
+
+    <!--通过useId获取user-->
+    <select id="getUserById" resultType="user">
+        select * from test.smbms_user
+        <where>
+            id=#{id}
+        </where>
+    </select>
+
+    <!--修改用户信息   User user   set会自动去掉逗号-->
+    <update id="modify" parameterType="user">
+        update test.smbms_user
+        <set>
+            <if test="userCode !=null">
+                userCode=#{userCode},
+            </if>
+            <if test="userName !=null">
+                userName=#{userName},
+            </if>
+            <if test="phone !=null">
+                phone=#{phone}
+            </if>
+        </set>
+        <where>
+            id=#{id}
+        </where>
+    </update>
+
+    <!--修改当前用户密码-->
+    <update id="updatePwd" parameterType="String">
+        update test.smbms_user
+        <set>
+            <if test="userPassword !=null">
+                userPassword=#{userPassword},
+            </if>
+        </set>
+        <where>
+            id=#{id}
+        </where>
+    </update>
+
+
+</mapper>
