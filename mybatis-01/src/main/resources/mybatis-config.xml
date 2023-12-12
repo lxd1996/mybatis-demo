@@ -5,10 +5,10 @@
 <configuration>
 
     <!--导入配置文件jdbc.properties -->
-    <properties resource="jdbc.properties">
-        <!-- 也可以在这块配置，但是都配置后以外边为准 三个优先级 1.方法传入>2.properties > 3.这块配置-->
-        <property name="password" value="error"/>
-    </properties>
+<!--    <properties resource="jdbc.properties">-->
+<!--        &lt;!&ndash; 也可以在这块配置，但是都配置后以外边为准 三个优先级 1.方法传入>2.properties > 3.这块配置&ndash;&gt;-->
+<!--        <property name="password" value="error"/>-->
+<!--    </properties>-->
 
     <!-- 有很多种的配置，都表示进阶 官方文档上很详细。。-->
 <!--    <settings>-->
@@ -31,22 +31,22 @@
             <!-- 在 MyBatis 中有两种类型的事务管理器（也就是 type="[JDBC|MANAGED]"）：某些框架不希望用完关闭连接就用另一个-->
             <transactionManager type="JDBC"/>
             <!-- -->
-            <dataSource type="POOLED">
-                <property name="driver" value="${driver}"/>
-                <property name="url" value="${url}"/>
-                <property name="username" value="${username}"/>
-                <property name="password" value="${password}"/>
+            <dataSource type="com.lxd.utils.DruidDataSrc">
+                <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/mybatis?useUnicode=true&amp;serverTimezone=GMT&amp;useSSL=false"/>
+                <property name="username" value="root"/>
+                <property name="password" value=""/>
             </dataSource>
         </environment>
 
         <!-- 第二个数据源-->
         <environment id="linux">
             <transactionManager type="JDBC"/>
-            <dataSource type="POOLED">
-                <property name="driver" value="${driverlinux}"/>
-                <property name="url" value="${urllinux}"/>
-                <property name="username" value="${usernamelinux}"/>
-                <property name="password" value="${passwordlinux}"/>
+            <dataSource type="com.lxd.utils.DruidDataSrc">
+                <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/mybatis?useUnicode=true&amp;serverTimezone=GMT&amp;useSSL=false"/>
+                <property name="username" value="root"/>
+                <property name="password" value=""/>
             </dataSource>
         </environment>
 
